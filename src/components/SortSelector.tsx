@@ -27,16 +27,18 @@ const sortOptions = [
 
 const SortSelector: React.FC<SortSelectorProps> = ({ sortOption, setSortOption }) => {
   return (
-    <div className="flex items-center">
-      <span className="mr-2 text-gray-700 font-medium">Sort by:</span>
+    <div className="flex items-center w-full sm:w-auto">
+      <span className="mr-2 text-gray-700 font-medium text-sm">Sort by:</span>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="flex items-center gap-2">
-            {sortOptions.find(option => option.value === sortOption)?.label}
-            <ChevronDown size={16} />
+          <Button variant="outline" className="flex items-center gap-2 w-full sm:w-auto text-sm h-9">
+            <span className="truncate">
+              {sortOptions.find(option => option.value === sortOption)?.label}
+            </span>
+            <ChevronDown size={16} className="ml-auto" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="w-full min-w-[200px]">
           <DropdownMenuRadioGroup value={sortOption} onValueChange={(value) => setSortOption(value as SortOption)}>
             {sortOptions.map((option) => (
               <DropdownMenuRadioItem key={option.value} value={option.value}>

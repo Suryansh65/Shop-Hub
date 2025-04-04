@@ -89,11 +89,11 @@ const Index = () => {
       <main className="flex-grow">
         <PageBanner />
         
-        <div className="container mx-auto px-4 pb-16">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-            <h2 className="text-2xl font-bold">Our Products</h2>
+        <div className="container mx-auto px-4 pb-10 md:pb-16">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-3 md:gap-4">
+            <h2 className="text-xl md:text-2xl font-bold">Our Products</h2>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-3 md:gap-4">
               <CategoryFilter 
                 categories={categories} 
                 selectedCategory={selectedCategory} 
@@ -108,21 +108,21 @@ const Index = () => {
           </div>
           
           {isLoading ? (
-            <div className="flex justify-center items-center py-16">
-              <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              <span className="ml-2 text-lg">Loading products...</span>
+            <div className="flex justify-center items-center py-12 md:py-16">
+              <Loader2 className="h-6 w-6 md:h-8 md:w-8 animate-spin text-primary" />
+              <span className="ml-2 text-base md:text-lg">Loading products...</span>
             </div>
           ) : (
             <>
               {filteredProducts.length === 0 ? (
-                <div className="text-center py-16">
-                  <h3 className="text-xl font-medium mb-2">No products found</h3>
-                  <p className="text-gray-600">
+                <div className="text-center py-12 md:py-16">
+                  <h3 className="text-lg md:text-xl font-medium mb-2">No products found</h3>
+                  <p className="text-gray-600 text-sm md:text-base">
                     Try changing your filters or check back later for new products.
                   </p>
                 </div>
               ) : (
-                <div className="product-grid">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                   {filteredProducts.map(product => (
                     <ProductCard key={product.id} product={product} />
                   ))}

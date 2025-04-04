@@ -30,16 +30,18 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   };
 
   return (
-    <div className="flex items-center">
-      <span className="mr-2 text-gray-700 font-medium">Category:</span>
+    <div className="flex items-center w-full sm:w-auto">
+      <span className="mr-2 text-gray-700 font-medium text-sm">Category:</span>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="flex items-center gap-2">
-            {selectedCategory === 'all' ? 'All Categories' : formatCategoryName(selectedCategory)}
-            <ChevronDown size={16} />
+          <Button variant="outline" className="flex items-center gap-2 w-full sm:w-auto text-sm h-9">
+            <span className="truncate">
+              {selectedCategory === 'all' ? 'All Categories' : formatCategoryName(selectedCategory)}
+            </span>
+            <ChevronDown size={16} className="ml-auto" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="w-full min-w-[200px]">
           <DropdownMenuRadioGroup value={selectedCategory} onValueChange={setSelectedCategory}>
             <DropdownMenuRadioItem value="all">
               All Categories

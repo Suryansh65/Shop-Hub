@@ -11,7 +11,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      <div className="relative h-48 overflow-hidden bg-gray-100">
+      <div className="relative h-40 sm:h-48 overflow-hidden bg-gray-100">
         <img 
           src={product.image} 
           alt={product.title}
@@ -22,9 +22,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
       </div>
       
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <div className="flex justify-between items-start mb-2">
-          <h3 className="font-medium text-gray-800 line-clamp-2 flex-1 mr-2" title={product.title}>
+          <h3 className="font-medium text-sm sm:text-base text-gray-800 line-clamp-2 flex-1 mr-2" title={product.title}>
             {product.title}
           </h3>
         </div>
@@ -34,27 +34,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {[...Array(5)].map((_, i) => (
               <Star 
                 key={i} 
-                size={16} 
+                size={14} 
                 fill={i < Math.round(product.rating.rate) ? "currentColor" : "none"} 
                 className="text-yellow-500"
               />
             ))}
           </div>
-          <span className="text-sm text-gray-500">({product.rating.count})</span>
+          <span className="text-xs sm:text-sm text-gray-500">({product.rating.count})</span>
         </div>
         
-        <p className="text-sm text-gray-600 line-clamp-2 mb-4" title={product.description}>
+        <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 mb-3 sm:mb-4" title={product.description}>
           {product.description}
         </p>
         
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
+          <span className="text-base sm:text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
           <Button 
-            variant="primary" 
+            variant="default" 
             size="sm" 
-            className="flex items-center gap-1"
+            className="flex items-center gap-1 bg-primary hover:bg-primary/90 text-xs sm:text-sm"
           >
-            <ShoppingCart size={15} />
+            <ShoppingCart size={14} />
             <span>Add</span>
           </Button>
         </div>
